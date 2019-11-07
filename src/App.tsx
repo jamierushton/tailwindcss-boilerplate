@@ -25,9 +25,9 @@ const Navigation: React.FC<any> = ({title, children}): JSX.Element => {
   );
 };
 
-const NavLink: React.FC<any> = ({title, href = '#'}): JSX.Element => {
+const Link: React.FC<any> = ({title, to}): JSX.Element => {
   return (
-    <a href={href} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+    <a href={to} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
       {title}
     </a>
   );
@@ -60,9 +60,9 @@ const App: React.FC = (): JSX.Element => {
   return (
     <>
       <Navigation title="React-Typescript Tailwind">
-        <NavLink title="Docs" />
-        <NavLink title="Examples" />
-        <NavLink title="Blog" />
+        <Link title="Docs" to="#" />
+        <Link title="Examples" to="#" />
+        <Link title="Blog" to="#" />
       </Navigation>
 
       <div className="container mx-auto px-4 py-4">
