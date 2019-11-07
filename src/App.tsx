@@ -2,12 +2,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const Navigation: React.FC<any> = ({children}): JSX.Element => {
+const Navigation: React.FC<any> = ({title, children}): JSX.Element => {
   return (
     <>
-      <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+      <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <span className="font-semibold text-xl tracking-tight">React-Typescript Tailwind</span>
+          <span className="font-semibold text-xl tracking-tight">{title}</span>
         </div>
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -25,25 +25,63 @@ const Navigation: React.FC<any> = ({children}): JSX.Element => {
   );
 };
 
+const NavLink: React.FC<any> = ({title, href = '#'}): JSX.Element => {
+  return (
+    <a href={href} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+      {title}
+    </a>
+  );
+};
+
+const Alert: React.FC<any> = ({children}): JSX.Element => {
+  return (
+    <div className="bg-blue-100 border-t-4 border-blue-500 rounded-b text-blue-900 px-4 py-3 shadow-md" role="alert">
+      <div className="flex">
+        <div className="py-1">
+          <svg
+            className="fill-current h-6 w-6 text-blue-500 mr-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+          </svg>
+        </div>
+        <div>{children}</div>
+      </div>
+    </div>
+  );
+};
+
+const Footer: React.FC = (): JSX.Element => {
+  return <></>;
+};
+
 const App: React.FC = (): JSX.Element => {
   return (
     <>
-      <Navigation>
-        <a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-          Docs
-        </a>
-        <a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-          Examples
-        </a>
-        <a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
-          Blog
-        </a>
+      <Navigation title="React-Typescript Tailwind">
+        <NavLink title="Docs" />
+        <NavLink title="Examples" />
+        <NavLink title="Blog" />
       </Navigation>
 
-      <div className="flex mb-4">
-        <div className="w-1/4 bg-gray-500 h-12"></div>
-        <div className="w-3/4 bg-gray-400 h-12"></div>
+      <div className="container mx-auto px-4 py-4">
+        <Alert>
+          <p className="font-bold">Our privacy policy has changed</p>
+          <p className="text-sm">Make sure you know how these changes affect you.</p>
+        </Alert>
+
+        <div className="flex -mx-2 py-4">
+          <div className="w-1/3 px-2">
+            <div className="bg-gray-400 h-12"></div>
+          </div>
+          <div className="w-2/3 px-2">
+            <div className="bg-gray-500 h-12"></div>
+          </div>
+        </div>
       </div>
+
+      <Footer></Footer>
     </>
   );
 };
