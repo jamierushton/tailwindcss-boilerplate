@@ -81,7 +81,7 @@ const App: React.FC = (): JSX.Element => {
         </div>
       </div>
 
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };
